@@ -22,4 +22,8 @@ public class MainActivity extends AppCompatActivity {
     public void clickTwo(View v) {
         startActivity(new Intent(this, AnimationTwo.class));
     }
+
+    public void clickThree(View v) {
+        startActivity(new Intent(this, AnimationThree.class));
+    }
 }

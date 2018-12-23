@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sample.AnimationOne"></activity>
-        <activity android:name=".sample.AnimationTwo"></activity>
+        <activity android:name=".sample.AnimationOne" />
+        <activity android:name=".sample.AnimationTwo" />
+        <activity android:name=".sample.AnimationThree"></activity>
     </application>
 
 </manifest>

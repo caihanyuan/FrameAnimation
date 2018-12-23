@@ -1,6 +1,15 @@
 package com.ansen.frameanimation;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.util.Log;
 import android.widget.ImageView;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 /**
  * Created by Ansen on 2015/5/14 23:30.
@@ -12,13 +21,23 @@ import android.widget.ImageView;
  * @PACKAGE_NAME: com.ansen.frameanimation.sample
  * @Description: TODO
  */
-public class FrameAnimation {
+public class AdvanceFrameAnimation {
+
+    private final static String TAG = "AdvanceFrameAnimation";
 
     private boolean mIsRepeat;
 
     private AnimationListener mAnimationListener;
 
     private ImageView mImageView;
+
+    private Resources mResources;
+
+    private BitmapFactory.Options mBitmapOptions;
+
+    private Bitmap mLastBitmap = null;
+
+    private ArrayList<WeakReference<Bitmap>> mNeedReleaseBitmapList;
 
     private int[] mFrameRess;
 
@@ -62,12 +81,13 @@ public class FrameAnimation {
      * @param duration 每帧动画的播放间隔(毫秒)
      * @param isRepeat 是否循环播放
      */
-    public FrameAnimation(ImageView iv, int[] frameRes, int duration, boolean isRepeat) {
+    public AdvanceFrameAnimation(ImageView iv, int[] frameRes, int duration, boolean isRepeat) {
         this.mImageView = iv;
         this.mFrameRess = frameRes;
         this.mDuration = duration;
         this.mLastFrame = frameRes.length - 1;
         this.mIsRepeat = isRepeat;
+        initOptions(iv);
         play(0);
     }
 
@@ -77,12 +97,13 @@ public class FrameAnimation {
      * @param durations 每帧动画的播放间隔(毫秒)
      * @param isRepeat  是否循环播放
      */
-    public FrameAnimation(ImageView iv, int[] frameRess, int[] durations, boolean isRepeat) {
+    public AdvanceFrameAnimation(ImageView iv, int[] frameRess, int[] durations, boolean isRepeat) {
         this.mImageView = iv;
         this.mFrameRess = frameRess;
         this.mDurations = durations;
         this.mLastFrame = frameRess.length - 1;
         this.mIsRepeat = isRepeat;
+        initOptions(iv);
         playByDurations(0);
     }
 
@@ -94,12 +115,13 @@ public class FrameAnimation {
      * @param duration  每帧动画的播放间隔(毫秒)
      * @param delay     循环播放的时间间隔
      */
-    public FrameAnimation(ImageView iv, int[] frameRess, int duration, int delay) {
+    public AdvanceFrameAnimation(ImageView iv, int[] frameRess, int duration, int delay) {
         this.mImageView = iv;
         this.mFrameRess = frameRess;
         this.mDuration = duration;
         this.mDelay = delay;
         this.mLastFrame = frameRess.length - 1;
+        initOptions(iv);
         playAndDelay(0);
     }
 
@@ -111,13 +133,26 @@ public class FrameAnimation {
      * @param durations 每帧动画的播放间隔(毫秒)
      * @param delay     循环播放的时间间隔
      */
-    public FrameAnimation(ImageView iv, int[] frameRess, int[] durations, int delay) {
+    public AdvanceFrameAnimation(ImageView iv, int[] frameRess, int[] durations, int delay) {
         this.mImageView = iv;
         this.mFrameRess = frameRess;
         this.mDurations = durations;
         this.mDelay = delay;
         this.mLastFrame = frameRess.length - 1;
+        initOptions(iv);
         playByDurationsAndDelay(0);
+    }
+
+    private void initOptions(ImageView iv){
+        if(iv != null){
+            mResources = iv.getResources();
+            mBitmapOptions = new BitmapFactory.Options();
+            mBitmapOptions.inPreferredConfig = Config.ARGB_8888;
+            mBitmapOptions.inSampleSize = 1;
+            mBitmapOptions.inDensity = mResources.getDisplayMetrics().densityDpi;
+            mBitmapOptions.inMutable = true;
+            mNeedReleaseBitmapList = new ArrayList<>();
+        }
     }
 
     private void playByDurationsAndDelay(final int i) {
@@ -211,7 +246,7 @@ public class FrameAnimation {
                         playByDurations(0);
                     } else {
                         if (mAnimationListener != null) {
-                            mAnimationListener.onAnimationEnd();
+                            ;
                         }
                     }
                 } else {
@@ -251,6 +286,15 @@ public class FrameAnimation {
                         play(0);
                     } else {
                         if (mAnimationListener != null) {
+                            //动画结束后，清除已失效缓存的bitmap
+                            for(WeakReference<Bitmap> bitmapRef : mNeedReleaseBitmapList){
+                                Bitmap bitmap = bitmapRef.get();
+                                if(bitmap != null && !bitmap.isRecycled()){
+                                    bitmap.recycle();
+                                }
+                            }
+                            mNeedReleaseBitmapList.clear();
+
                             mAnimationListener.onAnimationEnd();
                         }
                     }
@@ -329,6 +373,78 @@ public class FrameAnimation {
 
     private void setFrame(int i){
         int resId = mFrameRess[i];
-        mImageView.setBackgroundResource(resId);
+
+        //先只计算出当前帧的图片大小，不进行解码
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        options.inDensity = mBitmapOptions.inDensity;
+        options.inSampleSize = mBitmapOptions.inSampleSize;
+        options.inPreferredConfig = mBitmapOptions.inPreferredConfig;
+        BitmapFactory.decodeResource(mResources, resId, options);
+
+
+        boolean canUseInBitmap = false;
+        if(mLastBitmap != null){
+            canUseInBitmap = canUseForInBitmap(mLastBitmap, options);
+        }
+
+        if (canUseInBitmap) {
+            Log.i(TAG, "canUseInBitmap");
+            mBitmapOptions.inBitmap = mLastBitmap;
+        } else {
+            mBitmapOptions.inBitmap = null;
+        }
+
+        Bitmap bitmap = BitmapFactory.decodeResource(mResources, resId, mBitmapOptions);
+        mImageView.setImageBitmap(bitmap);
+
+        if(!canUseInBitmap){
+            Log.i(TAG, "can not UseInBitmap, add to release bitmap list");
+            mNeedReleaseBitmapList.add(new WeakReference<>(bitmap));
+            mLastBitmap = bitmap;
+        }
+    }
+
+    /**
+     * 是否有可复用的bitmap内存区域
+     * @param candidate
+     * @param targetOptions
+     * @return
+     */
+    private boolean canUseForInBitmap(Bitmap candidate, BitmapFactory.Options targetOptions) {
+        if (candidate.isRecycled()) {
+            return false;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // From Android 4.4 (KitKat) onward we can re-use if the byte size of
+            // the new bitmap is smaller than the reusable bitmap candidate
+            // allocation byte count.
+            int width = targetOptions.outWidth / targetOptions.inSampleSize;
+            int height = targetOptions.outHeight / targetOptions.inSampleSize;
+            int byteCount = width * height * getBytesPerPixel(candidate.getConfig());
+            return byteCount <= candidate.getAllocationByteCount();
+        }
+
+        // On earlier versions, the dimensions must match exactly and the inSampleSize must be 1
+        return candidate.getWidth() == targetOptions.outWidth
+                && candidate.getHeight() == targetOptions.outHeight
+                && targetOptions.inSampleSize == 1;
+    }
+
+    /**
+     * 获取当前配置一像素占多少字节
+     */
+    private int getBytesPerPixel(Config config) {
+        if (config == Config.ARGB_8888) {
+            return 4;
+        } else if (config == Config.RGB_565) {
+            return 2;
+        } else if (config == Config.ARGB_4444) {
+            return 2;
+        } else if (config == Config.ALPHA_8) {
+            return 1;
+        }
+        return 1;
     }
 }

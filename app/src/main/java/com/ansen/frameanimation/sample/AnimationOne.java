@@ -28,6 +28,9 @@ public class AnimationOne extends Activity {
 
 
         AnimationDrawable animationDrawable = (AnimationDrawable) image.getDrawable();
+        animationDrawable.setOneShot(true);
+
+
         animationDrawable.start();
     }
 }

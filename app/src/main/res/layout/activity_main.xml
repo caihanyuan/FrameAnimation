@@ -17,4 +17,10 @@
         android:layout_height="wrap_content"
         android:onClick="clickTwo"
         android:text="Two" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickThree"
+        android:text="Three" />
 </LinearLayout>

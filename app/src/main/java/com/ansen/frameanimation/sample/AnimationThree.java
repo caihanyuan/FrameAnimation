@@ -8,22 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.ansen.frameanimation.AdvanceFrameAnimation;
 import com.ansen.frameanimation.FrameAnimation;
 import com.ansen.frameanimation.R;
 
-/**
- * Created by Ansen on 2017/3/24 10:09.
- *
- * @E-mail: ansen360@126.com
- * @Blog: http://blog.csdn.net/qq_25804863
- * @Github: https://github.com/ansen360
- * @PROJECT_NAME: FrameAnimation
- * @PACKAGE_NAME: com.ansen.frameanimation.sample
- * @Description: FrameAnimation 使用示例
- */
-public class AnimationTwo extends Activity {
-
-
+public class AnimationThree extends Activity {
     private static final String TAG = "ansen";
 
     @Override
@@ -33,8 +22,8 @@ public class AnimationTwo extends Activity {
         final ImageView image = (ImageView) findViewById(R.id.image);
 
         // 每50ms一帧 循环播放动画
-        final FrameAnimation frameAnimation = new FrameAnimation(image, getRes(), 50, false);
-        frameAnimation.setAnimationListener(new FrameAnimation.AnimationListener() {
+        final AdvanceFrameAnimation frameAnimation = new AdvanceFrameAnimation(image, getRes(), 50, false);
+        frameAnimation.setAnimationListener(new AdvanceFrameAnimation.AnimationListener() {
             @Override
             public void onAnimationStart() {
                 Log.d(TAG, "start");
@@ -84,5 +73,4 @@ public class AnimationTwo extends Activity {
         typedArray.recycle();
         return resId;
     }
-
 }

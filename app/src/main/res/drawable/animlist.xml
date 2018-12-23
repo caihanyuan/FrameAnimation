@@ -4,260 +4,144 @@
 
     <!--通过Android动画集播放的八十张图片-->
     <item
-        android:drawable="@mipmap/c_1"
+        android:drawable="@mipmap/pic_particular1"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_2"
+        android:drawable="@mipmap/pic_particular2"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_3"
+        android:drawable="@mipmap/pic_particular3"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_4"
+        android:drawable="@mipmap/pic_particular4"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_5"
+        android:drawable="@mipmap/pic_particular5"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_6"
+        android:drawable="@mipmap/pic_particular6"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_7"
+        android:drawable="@mipmap/pic_particular7"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_8"
+        android:drawable="@mipmap/pic_particular8"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_9"
+        android:drawable="@mipmap/pic_particular9"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_10"
+        android:drawable="@mipmap/pic_particular10"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_1"
+        android:drawable="@mipmap/pic_particular11"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_11"
+        android:drawable="@mipmap/pic_particular12"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_12"
+        android:drawable="@mipmap/pic_particular13"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_13"
+        android:drawable="@mipmap/pic_particular14"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_14"
+        android:drawable="@mipmap/pic_particular15"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_15"
+        android:drawable="@mipmap/pic_particular16"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_16"
+        android:drawable="@mipmap/pic_particular17"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_17"
+        android:drawable="@mipmap/pic_particular18"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_18"
+        android:drawable="@mipmap/pic_particular19"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_19"
+        android:drawable="@mipmap/pic_particular20"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/c_20"
+        android:drawable="@mipmap/pic_particular21"
         android:duration="50" />
-
     <item
-        android:drawable="@mipmap/down_1"
+        android:drawable="@mipmap/pic_particular22"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_2"
+        android:drawable="@mipmap/pic_particular23"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_3"
+        android:drawable="@mipmap/pic_particular24"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_4"
+        android:drawable="@mipmap/pic_particular25"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_5"
+        android:drawable="@mipmap/pic_particular26"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_6"
+        android:drawable="@mipmap/pic_particular27"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_7"
+        android:drawable="@mipmap/pic_particular28"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_8"
+        android:drawable="@mipmap/pic_particular29"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_9"
+        android:drawable="@mipmap/pic_particular30"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_10"
+        android:drawable="@mipmap/pic_particular31"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_1"
+        android:drawable="@mipmap/pic_particular32"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_11"
+        android:drawable="@mipmap/pic_particular33"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_12"
+        android:drawable="@mipmap/pic_particular34"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_13"
+        android:drawable="@mipmap/pic_particular35"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_14"
+        android:drawable="@mipmap/pic_particular36"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_15"
+        android:drawable="@mipmap/pic_particular37"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_16"
+        android:drawable="@mipmap/pic_particular38"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_17"
+        android:drawable="@mipmap/pic_particular39"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_18"
+        android:drawable="@mipmap/pic_particular40"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_19"
+        android:drawable="@mipmap/pic_particular41"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/down_20"
+        android:drawable="@mipmap/pic_particular42"
         android:duration="50" />
-
-
     <item
-        android:drawable="@mipmap/e_1"
+        android:drawable="@mipmap/pic_particular43"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/e_2"
+        android:drawable="@mipmap/pic_particular44"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/e_3"
+        android:drawable="@mipmap/pic_particular45"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/e_4"
+        android:drawable="@mipmap/pic_particular46"
         android:duration="50" />
     <item
-        android:drawable="@mipmap/e_5"
+        android:drawable="@mipmap/pic_particular47"
         android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_6"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_7"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_8"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_9"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_10"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_1"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_11"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_12"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_13"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_14"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_15"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_16"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_17"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_18"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_19"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/e_20"
-        android:duration="50" />
-
-    <item
-        android:drawable="@mipmap/circle_1"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_2"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_3"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_4"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_5"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_6"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_7"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_8"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_9"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_10"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_1"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_11"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_12"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_13"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_14"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_15"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_16"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_17"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_18"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_19"
-        android:duration="50" />
-    <item
-        android:drawable="@mipmap/circle_20"
-        android:duration="50" />
-
 </animation-list>
