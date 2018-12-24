@@ -37,8 +37,6 @@ public class AdvanceFrameAnimation {
 
     private Bitmap mLastBitmap = null;
 
-    private ArrayList<WeakReference<Bitmap>> mNeedReleaseBitmapList;
-
     private int[] mFrameRess;
 
     /**
@@ -151,7 +149,6 @@ public class AdvanceFrameAnimation {
             mBitmapOptions.inSampleSize = 1;
             mBitmapOptions.inDensity = mResources.getDisplayMetrics().densityDpi;
             mBitmapOptions.inMutable = true;
-            mNeedReleaseBitmapList = new ArrayList<>();
         }
     }
 
@@ -287,14 +284,7 @@ public class AdvanceFrameAnimation {
                     } else {
                         if (mAnimationListener != null) {
                             //动画结束后，清除已失效缓存的bitmap
-                            for(WeakReference<Bitmap> bitmapRef : mNeedReleaseBitmapList){
-                                Bitmap bitmap = bitmapRef.get();
-                                if(bitmap != null && !bitmap.isRecycled()){
-                                    bitmap.recycle();
-                                }
-                            }
-                            mNeedReleaseBitmapList.clear();
-
+                            mLastBitmap = null;
                             mAnimationListener.onAnimationEnd();
                         }
                     }
@@ -400,7 +390,6 @@ public class AdvanceFrameAnimation {
 
         if(!canUseInBitmap){
             Log.i(TAG, "can not UseInBitmap, add to release bitmap list");
-            mNeedReleaseBitmapList.add(new WeakReference<>(bitmap));
             mLastBitmap = bitmap;
         }
     }

@@ -55,9 +55,6 @@ public class AnimationThree extends Activity {
                 }
             }
         });
-
-//        循环播放动画,循环间隔为4000ms
-//        FrameAnimation frameAnimation = new FrameAnimation(image, getRes(), 50, 4000);
     }
 
     /**
